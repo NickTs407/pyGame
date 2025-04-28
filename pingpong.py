@@ -1,6 +1,5 @@
 import pygame, sys
 
-
 win_h = 800
 win_w = 1280
 bg_color = (200, 200, 200)
