@@ -9,9 +9,9 @@ pl_color_r = (250, 20, 20)
 pl_color_u = (20, 20, 250)
 pl_color_d = (0, 0, 0)
 pl_speed = 0.5
-ball_radius = 10
+ball_radius = 15
 ball_color = (250, 250, 250)
-ball_speed = 0.2
+ball_speed = 0.05
 
 
 class PingPong:
@@ -130,8 +130,8 @@ class Ball:
     def update_ball(self, b_color):
         self.x += self.vx * ball_speed
         self.y += self.vy * ball_speed
-        self.rect.x = int(self.x)
-        self.rect.y = int(self.y)
+        self.rect.x = self.x
+        self.rect.y = self.y
         if self.rect.colliderect(self.pgame.left_pl.rect):
             if self.vx < 0:
                 self.vx *= -1
@@ -144,19 +144,19 @@ class Ball:
         if self.rect.colliderect(self.pgame.down_pl.rect):
             if self.vy > 0:
                 self.vy *= -1
-        if self.rect.left <= 0:
+        if self.rect.left < 0:
             self.reset()
             self.pgame.right_player_score += 1
             self.vx = 1
-        if self.rect.right >= win_size:
+        if self.rect.right > win_size:
             self.reset()
             self.pgame.left_player_score += 1
             self.vx = -1
-        if self.rect.top <= 0:
+        if self.rect.top < 0:
             self.reset()
             self.pgame.up_player_score += 1
             self.vy = 1
-        if self.rect.bottom >= win_size:
+        if self.rect.bottom > win_size:
             self.reset()
             self.pgame.down_player_score += 1
             self.vy = -1
