@@ -118,20 +118,18 @@ class Ball:
         self.reset()
 
     def reset(self):
-        self.rect = pygame.Rect(0, 0, ball_radius*2, ball_radius*2)
-        self.rect.center = (win_size // 2, win_size // 2)
-        self.rect.x = win_size // 2
-        self.rect.y = win_size // 2
-        self.x = float(self.rect.x)
-        self.y = float(self.rect.y)
+        self.x = win_size // 2
+        self.y = win_size // 2
+        self.rect = pygame.Rect(0, 0, ball_radius * 2, ball_radius * 2)
+        self.rect.center = (int(self.x), int(self.y))
         self.vx = 1
         self.vy = 1
 
     def update_ball(self, b_color):
         self.x += self.vx * ball_speed
         self.y += self.vy * ball_speed
-        self.rect.x = self.x
-        self.rect.y = self.y
+        self.rect.center = (int(self.x), int(self.y))
+
         if self.rect.colliderect(self.pgame.left_pl.rect):
             if self.vx < 0:
                 self.vx *= -1
@@ -160,7 +158,7 @@ class Ball:
             self.reset()
             self.pgame.down_player_score += 1
             self.vy = -1
-        pygame.draw.circle(self.screen, b_color, (self.x, self.y), ball_radius)
+        pygame.draw.circle(self.screen, b_color, (int(self.x), int(self.y)), ball_radius)
 
 
 if __name__ == '__main__':
