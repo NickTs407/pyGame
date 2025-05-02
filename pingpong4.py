@@ -19,7 +19,7 @@ class PingPong:
         pygame.init()
         self.screen = pygame.display.set_mode((win_size, win_size))
         pygame.display.set_caption("Ping Pong 4")
-        self.left_pl = Platform(self, 0, win_size//2, plat_w, plat_h)
+        self.left_pl = Platform(self, 5, win_size//2, plat_w, plat_h)
         self.right_pl = Platform(self, win_size-plat_w, win_size//2, plat_w, plat_h)
         self.up_pl = Platform(self, win_size//2, 0, plat_h, plat_w)
         self.down_pl = Platform(self, win_size//2, win_size-plat_w, plat_h, plat_w)
